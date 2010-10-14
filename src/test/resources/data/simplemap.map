@@ -1,0 +1,8 @@
+Start: ATL
+Route: 1, street1, 5
+Route: 1, street2, 7
+Route: 1, street3, 9
+Route: 2, street1, 5
+Route: 2, street4, 2
+Route: 2, street3, 2
+End: SFO  
