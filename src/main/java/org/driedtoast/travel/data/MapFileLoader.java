@@ -35,20 +35,31 @@ public class MapFileLoader {
 	}
 	
 	
+	public void processLine(DestinationMap map, String line) {
+		String[] splits = line.split(":");
+		String type = splits[0];
+		LineType ltype = LineType.valueOf(type);
+		MapElementFactory factory = this.factories.get(ltype);
+		String rest = splits[1];
+		factory.createElement(ltype, map, rest);
+	}
+
+	/**
+	 * Process the file 
+	 * 
+	 * @param filename
+	 * @return
+	 * @throws IOException
+	 */
 	public DestinationMap parse(String filename) throws IOException {
-		
 		InputStream stream = DataUtil.load(filename);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 		String line = null;
-		while((line = reader.readLine()) != null) {
-			System.out.println(" LINE " + line);
-		}
-		
-		
 		DestinationMap map = new DestinationMap();
-		
+		while((line = reader.readLine()) != null) {
+			this.processLine(map, line);
+		}
 		return map;
-	
 	}
 	
 	

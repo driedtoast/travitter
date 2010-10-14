@@ -19,6 +19,27 @@ public class DestinationMap {
 	private List<Hop> hops;
 	private DistanceType distanceType = DistanceType.MILEAGE;
 	private Map<String,Point> points = new HashMap<String,Point>();
+	private Point lastAdded;
+	private Destination lastDest;
+	
+	/**
+	 * Used for parsing map files
+	 * 
+	 * @return
+	 */
+	public Point getLastAdded() {
+		return lastAdded;
+	}
+	
+	/**
+	 * Used for parsing map files
+	 * 
+	 * @return
+	 */
+	public Destination getLastDestinationAdded() {
+		return lastDest;
+	}
+	
 	
 	public DistanceType getDistanceType() {
 		return distanceType;
@@ -38,7 +59,12 @@ public class DestinationMap {
 	
 	
 	
-	
+	public void addDestination(Destination destination) {
+		this.lastDest = destination;
+		this.getDestinations().add(destination);
+		this.lastAdded = destination;
+		
+	}
 	
 	public List<Destination> getDestinations() {
 		if (destinations == null) {
@@ -83,6 +109,7 @@ public class DestinationMap {
 		if(pt.getName() == null || pt.getName().trim().length() == 0) {
 			return;
 		}
+		this.lastAdded = pt;
 		this.points.put(pt.getName(), pt);
 	}
 	

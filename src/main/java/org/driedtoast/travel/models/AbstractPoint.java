@@ -15,6 +15,15 @@ public abstract class AbstractPoint implements Point {
 	private List<Hop> outgoing;
 	private long lat = -1;
 	private long lon = -1;
+	private String marker;
+	public String getMarker() {
+		return marker;
+	}
+
+	public void setMarker(String marker) {
+		this.marker = marker;
+	}
+
 	private String name;
 
 	public List<Hop> getIncoming() {

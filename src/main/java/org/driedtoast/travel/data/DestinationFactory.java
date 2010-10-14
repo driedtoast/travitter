@@ -8,8 +8,8 @@ import org.driedtoast.travel.models.LineType;
 public class DestinationFactory implements MapElementFactory<Destination> {
 
 	public Destination createElement(LineType type,DestinationMap map, String line) {
-		Destination dest = new Destination(line);
-		map.getDestinations().add(dest);
+		Destination dest = new Destination(line.trim());
+		map.addDestination(dest);
 		return dest;
 	}
 
