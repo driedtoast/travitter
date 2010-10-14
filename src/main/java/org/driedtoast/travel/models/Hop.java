@@ -18,6 +18,16 @@ public class Hop {
 	private Point source;
 	// TODO define weight logic
 	
+	private String marker;
+	public String getMarker() {
+		return marker;
+	}
+
+	public void setMarker(String marker) {
+		this.marker = marker;
+	}
+
+	
 	
 	public long getLength() {
 		return length;

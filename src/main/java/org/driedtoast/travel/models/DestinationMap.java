@@ -21,6 +21,16 @@ public class DestinationMap {
 	private Map<String,Point> points = new HashMap<String,Point>();
 	private Point lastAdded;
 	private Destination lastDest;
+	private Hop lastHop;
+	
+	/**
+	 * Used for parsing map files
+	 * 
+	 * @return
+	 */
+	public Hop getLastHopAdded() {
+		return lastHop;
+	}
 	
 	/**
 	 * Used for parsing map files
@@ -122,6 +132,15 @@ public class DestinationMap {
 		return this.points.values();
 	}
 	
+	
+	protected Point dedupPoint(Point pt) {
+		Point trueOne = this.points.get(pt.getName());
+		if(trueOne == null) {
+			trueOne = pt;
+		}
+		return trueOne;
+	}
+	
 	/**
 	 * Adds an edge to the map 
 	 * 
@@ -132,6 +151,9 @@ public class DestinationMap {
 	 * @return
 	 */
 	public Hop addHop(Point source, Point target, long distance, HopType type) {
+		source = dedupPoint(source);
+		target = dedupPoint(target);
+		
 		this.addPoint(source);
 		this.addPoint(target);
 		Hop hop = new Hop();
@@ -141,6 +163,7 @@ public class DestinationMap {
 		hop.setDistanceType(distanceType);
 		hop.setLength(distance);
 		this.getHops().add(hop);
+		this.lastHop = hop;
 		return hop;
 	}
 	

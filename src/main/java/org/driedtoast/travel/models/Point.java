@@ -9,12 +9,6 @@ import java.util.List;
  *
  */
 public interface Point {
-
-	/**
-	 * Used for grouping 
-	 * @return
-	 */
-	public String getMarker();
 	
 	
 	public String getName();
