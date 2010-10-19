@@ -1,0 +1,7 @@
+h1. Overview
+
+This is a project to mess around with google maps and random graph distance fun.
+
+Initially the concept will be to measure the cost a trip will cost in gas based on the car you are driving and the highway vs city miles.
+
+
